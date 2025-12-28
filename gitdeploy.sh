@@ -25,7 +25,7 @@ if  git diff --cached --quiet; then
   exit 0
 fi
 
-git commit -m "Publish: $(date -Iseconds) nikola rebuild 2025 revival"
+git commit -m "Publish: $(date) nikola rebuild 2025 revival"
 git push
 
 
@@ -39,5 +39,5 @@ if git diff --cached --quiet; then
   exit 0
 fi
 
-git commit -m "Publish: $(date -Iseconds) venblog 2025 revival"
+git commit -m "Publish: $(date) venblog 2025 revival"
 git push

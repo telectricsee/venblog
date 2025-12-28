@@ -1,5 +1,5 @@
 clean-output:
 	rm -rf $(OUTPUT_DIR)
 
-# rm -rf /srv/http
+# rm -rf /home/rskz/Public/git/venblog/output
 

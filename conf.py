@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
@@ -17,7 +18,7 @@ import time
 
 
 # Data about this site
-BLOG_AUTHOR = "revorefurb"  # (translatable)
+BLOG_AUTHOR = "revo"  # (translatable)
 BLOG_TITLE = "Two Hours Late"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
@@ -79,15 +80,16 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-	('/', '<i class="fa fa-home fa-lg"></i>'),
+	('/', 'Home'),
 	('/about.html', 'About'),
         ('/archive.html', 'Archive'),
         ('/categories/', 'Tags'),
 	('/authors/', 'Authors'),
-	('https://twitter.com/revorefurb', '<i class="fa fa-twitter fa-lg"></i>'),
-	('https://github.com/revorefurb', '<i class="fa fa-github fa-lg"></i>'),
-	('http://writerscafe.org/biminicrimp', '<i class = "fa fa-pencil-square-o fa-lg"></i>'),
-	('/rss.xml', '<i class="fa fa-rss fa-lg"></i>'),
+	('https://github.com/telectricsee', 'Github'),
+	('http://writerscafe.org/biminicrimp', 'WritersCafe'),
+	('https://soundcloud.com/user-819601661', 'SoundCloud'),
+	#('https://twitter.com/revorefurb', '<i class="fa fa-twitter fa-lg"></i>'),
+	#('/rss.xml', '<i class="fa fa-rss fa-lg"></i>'),
     ),
 }
 
@@ -101,7 +103,7 @@ NAVIGATION_LINKS_ALT = {
 
 
 # Name of the theme to use.
-THEME = "custom_theme"
+THEME = "bootstrap3-gradients"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
@@ -174,7 +176,7 @@ TIMEZONE = "America/Phoenix"
 # Date format used to display post dates. (translatable)
 # (str used by datetime.datetime.strftime)
 # DATE_FORMAT = '%Y-%m-%d %H:%M'
-DATE_FORMAT = '%B %d, %Y'
+DATE_FORMAT = 'yyyy-mm-dd HH:mm' #'%B %d, %Y'
 
 # Date format used to display post dates, if local dates are used. (translatable)
 # (str used by moment.js)
@@ -449,8 +451,10 @@ AUTHOR_PATH = "authors"
 # and displayed underneath the author list or index page’s title.
 AUTHOR_PAGES_DESCRIPTIONS = {
     DEFAULT_LANG: {
-        "revorefurb": "Techno data monkey.",
-        "biminicrimp": "Stream of consciousness.",
+	"telectricsee": "Architect",
+        "revorefurb": "Builder",
+        "biminicrimp": "Writer",
+	"Rifkoy Sockif": "Performer",
 	"Benjamin Manahan": "Human being."
     },
  }
@@ -567,7 +571,7 @@ GITHUB_COMMIT_SOURCE = True
 # Where the output site should be located
 # If you don't use an absolute path, it will be considered as relative
 # to the location of conf.py
-OUTPUT_FOLDER = '/srv/http/'
+OUTPUT_FOLDER = 'output'
 
 # where the "cache" of partial generated content should be located
 # default: 'cache'
@@ -791,7 +795,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 # vs
 # xcode
 # This list MAY be incomplete since pygments adds styles every now and then.
-# CODE_COLOR_SCHEME = 'default'
+CODE_COLOR_SCHEME = 'native'
 
 # If you use 'site-reveal' theme you can select several subthemes
 # THEME_REVEAL_CONFIG_SUBTHEME = 'sky'
@@ -1183,7 +1187,7 @@ $(document).ready(function () {
 
 # If you hate "Filenames with Capital Letters and Spaces.md", you should
 # set this to true.
-UNSLUGIFY_TITLES = True
+FILE_METADATA_UNSLUGIFY_TITLES = True
 
 # Additional metadata that is added to a post when creating a new_post
 # ADDITIONAL_METADATA = {}

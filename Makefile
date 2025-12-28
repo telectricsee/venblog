@@ -1,5 +1,5 @@
 # Python virtual env
-ENV_NAME = venblog
+ENV_NAME = .venv
 
 # Prefix command to execute Python code from 
 virtualenv
@@ -10,17 +10,17 @@ interface from virtualenv
 NIKOLA = $(ENV_ACT) cd $(BLOG_DIR) && nikola
 
 # Source of site
-BLOG_DIR = ~/aimer-dorenavant/revo/venblog
+BLOG_DIR = ~/Public/git/venblog
 
 # Build output for site
 OUTPUT_DIR = $(BLOG_DIR)/output
 
 # Staging folder for built site
-STAGING_DIR = /srv/http
+STAGING_DIR = $(BLOG_DIR)/output
 
 # Github Page remote
 ORIGIN = 
-git@github.com:revorefurb/revorefurb.github.io.git
+git@github.com:telectricsee/telectricsee.github.io.git
 
 # Website domain (used for CNAME file)
-DOMAIN = twohourslate.com
+DOMAIN = www.twohourslate.com

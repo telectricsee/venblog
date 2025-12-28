@@ -1,290 +1,315 @@
-<table class="docinfo" frame="void" rules="none">
-<col class="docinfo-name" />
-<col class="docinfo-content" />
-<tbody valign="top">
-<tr><th class="docinfo-name">Version:</th>
-<td>7.8.2</td></tr>
-<tr><th class="docinfo-name">Author:</th>
-<td>Roberto Alsina &lt;<a class="reference external" href="mailto:ralsina&#64;netmanagers.com.ar">ralsina&#64;netmanagers.com.ar</a>&gt;</td></tr>
-</tbody>
-</table>
-<div class="contents alert alert-info pull-right topic" id="contents">
-<p class="topic-title first">Contents</p>
+<section id="theming-nikola">
+<h1><a class="toc-backref" href="#toc-entry-1" role="doc-backlink">Theming Nikola</a></h1>
+<dl class="field-list simple">
+<dt>Version<span class="colon">:</span></dt>
+<dd><p>7.8.2</p>
+</dd>
+<dt>Author<span class="colon">:</span></dt>
+<dd><p>Roberto Alsina &lt;<a class="reference external" href="mailto:ralsina&#64;netmanagers.com.ar">ralsina&#64;netmanagers.com.ar</a>&gt;</p>
+</dd>
+</dl>
+<nav class="contents alert alert-info pull-right" id="contents">
+<p class="topic-title"><a class="reference internal" href="#top">Contents</a></p>
 <ul class="simple">
-<li><a class="reference internal" href="#the-structure" id="id1">The Structure</a></li>
-<li><a class="reference internal" href="#templates" id="id2">Templates</a></li>
-<li><a class="reference internal" href="#customizing-themes-to-user-color-preference-and-section-colors" id="id3">Customizing themes to user color preference and section colors</a></li>
-<li><a class="reference internal" href="#identifying-and-customizing-different-kinds-of-pages-with-a-shared-template" id="id4">Identifying and customizing different kinds of pages with a shared template</a></li>
-<li><a class="reference internal" href="#messages-and-translations" id="id5">Messages and Translations</a></li>
-<li><a class="reference internal" href="#less-and-sass" id="id6">LESS and Sass</a></li>
+<li><p><a class="reference internal" href="#theming-nikola" id="toc-entry-1">Theming Nikola</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-structure" id="toc-entry-2">The Structure</a></p></li>
+<li><p><a class="reference internal" href="#templates" id="toc-entry-3">Templates</a></p></li>
+<li><p><a class="reference internal" href="#customizing-themes-to-user-color-preference-and-section-colors" id="toc-entry-4">Customizing themes to user color preference and section colors</a></p></li>
+<li><p><a class="reference internal" href="#identifying-and-customizing-different-kinds-of-pages-with-a-shared-template" id="toc-entry-5">Identifying and customizing different kinds of pages with a shared template</a></p></li>
+<li><p><a class="reference internal" href="#messages-and-translations" id="toc-entry-6">Messages and Translations</a></p></li>
+<li><p><a class="reference internal" href="#less-and-sass" id="toc-entry-7">LESS and Sass</a></p></li>
 </ul>
-</div>
+</li>
+</ul>
+</nav>
 <p class="lead">This document is a reference about themes. If you want a tutorial, please read
 <a class="reference external" href="creating-a-theme.html">Creating a Theme</a></p>
-<div class="section" id="the-structure">
-<h1><a class="toc-backref" href="#id1">The Structure</a></h1>
-<p>Themes are located in the <tt class="docutils literal">themes</tt> folder where Nikola is installed, and in the <tt class="docutils literal">themes</tt> folder
+<section id="the-structure">
+<h2><a class="toc-backref" href="#toc-entry-2" role="doc-backlink">The Structure</a></h2>
+<p>Themes are located in the <code class="docutils literal">themes</code> folder where Nikola is installed, and in the <code class="docutils literal">themes</code> folder
 of your site, one folder per theme. The folder name is the theme name.</p>
 <p>A Nikola theme consists of the following folders (they are <em>all</em> optional):</p>
-<dl class="docutils">
+<dl>
 <dt>assets</dt>
-<dd><p class="first">This is where you would put your CSS, Javascript and image files. It will be copied
-into <tt class="docutils literal">output/assets</tt> when you build the site, and the templates will contain
+<dd><p>This is where you would put your CSS, Javascript and image files. It will be copied
+into <code class="docutils literal">output/assets</code> when you build the site, and the templates will contain
 references to them.</p>
 <p>The included themes use <a class="reference external" href="http://twitter.github.com/bootstrap/">Bootstrap</a>
 and <a class="reference external" href="http://www.jacklmoore.com/colorbox">Colorbox</a> so they are in assets,
 along with CSS files for syntax highlighting and reStructuredText, and a
 minified copy of jQuery.</p>
-<p class="last">If you want to base your theme on other frameworks (or on no framework at all)
+<p>If you want to base your theme on other frameworks (or on no framework at all)
 just remember to put there everything you need for deployment.</p>
 </dd>
 <dt>templates</dt>
-<dd>This contains the templates used to generate the pages. While Nikola will use a
+<dd><p>This contains the templates used to generate the pages. While Nikola will use a
 certain set of template names by default, you can add others for specific parts
-of your site.</dd>
+of your site.</p>
+</dd>
 <dt>messages</dt>
-<dd>Nikola tries to be multilingual. This is where you put the strings for your theme
-so that it can be translated into other languages.</dd>
+<dd><p>Nikola tries to be multilingual. This is where you put the strings for your theme
+so that it can be translated into other languages.</p>
+</dd>
 <dt>less</dt>
-<dd>Files to be compiled into CSS using <a class="reference external" href="http://lesscss.org/">LESS</a></dd>
+<dd><p>Files to be compiled into CSS using <a class="reference external" href="http://lesscss.org/">LESS</a></p>
+</dd>
 <dt>sass</dt>
-<dd>Files to be compiled into CSS using <a class="reference external" href="http://sass-lang.com/">Sass</a></dd>
+<dd><p>Files to be compiled into CSS using <a class="reference external" href="http://sass-lang.com/">Sass</a></p>
+</dd>
 </dl>
 <p>This mandatory file:</p>
-<dl class="docutils">
+<dl>
 <dt>parent</dt>
-<dd><p class="first">A text file that, on its first line, contains the name of the <strong>parent theme</strong>.
+<dd><p>A text file that, on its first line, contains the name of the <strong>parent theme</strong>.
 Any resources missing on this theme, will be looked up in the parent theme
 (and then in the grandparent, etc).</p>
-<p>The <tt class="docutils literal">parent</tt> is so you don't have to create a full theme each time: just create an
+<p>The <code class="docutils literal">parent</code> is so you don't have to create a full theme each time: just create an
 empty theme, set the parent, and add the bits you want modified.</p>
 <p>I recommend this:</p>
-<ul class="last simple">
-<li>If your theme uses Bootstrap 3, inherit the <tt class="docutils literal">bootstrap3</tt> theme.</li>
-<li>If your theme uses Jinja as a template engine, inherit <tt class="docutils literal"><span class="pre">base-jinja</span></tt>
-or <tt class="docutils literal"><span class="pre">bootstrap3-jinja</span></tt></li>
-<li>In any other case, inherit <tt class="docutils literal">base</tt>.</li>
+<ul class="simple">
+<li><p>If your theme uses Bootstrap 3, inherit the <code class="docutils literal">bootstrap3</code> theme.</p></li>
+<li><p>If your theme uses Jinja as a template engine, inherit <code class="docutils literal"><span class="pre">base-jinja</span></code>
+or <code class="docutils literal"><span class="pre">bootstrap3-jinja</span></code></p></li>
+<li><p>In any other case, inherit <code class="docutils literal">base</code>.</p></li>
 </ul>
 </dd>
 </dl>
 <p>And these optional files:</p>
-<dl class="docutils">
+<dl>
 <dt>engine</dt>
-<dd>A text file which, on the first line, contains the name of the template engine
-this theme needs. Currently supported values are &quot;mako&quot; and &quot;jinja&quot;.</dd>
+<dd><p>A text file which, on the first line, contains the name of the template engine
+this theme needs. Currently supported values are &quot;mako&quot; and &quot;jinja&quot;.</p>
+</dd>
 <dt>bundles</dt>
-<dd><p class="first">A text file containing a list of files to be turned into bundles using WebAssets.
+<dd><p>A text file containing a list of files to be turned into bundles using WebAssets.
 For example:</p>
-<pre class="literal-block">
-assets/css/all.css=bootstrap.css,rst.css,code.css,colorbox.css,custom.css
-</pre>
+<pre class="literal-block">assets/css/all.css=bootstrap.css,rst.css,code.css,colorbox.css,custom.css</pre>
 <p>This creates a file called &quot;assets/css/all.css&quot; in your output that is the
 combination of all the other file paths, relative to the output file.
 This makes the page much more efficient because it avoids multiple connections to the server,
 at the cost of some extra difficult debugging.</p>
 <p>WebAssets supports bundling CSS and JS files.</p>
-<p class="last">Templates should use either the bundle or the individual files based on the <tt class="docutils literal">use_bundles</tt>
-variable, which in turn is set by the <tt class="docutils literal">USE_BUNDLES</tt> option.</p>
+<p>Templates should use either the bundle or the individual files based on the <code class="docutils literal">use_bundles</code>
+variable, which in turn is set by the <code class="docutils literal">USE_BUNDLES</code> option.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="templates">
-<h1><a class="toc-backref" href="#id2">Templates</a></h1>
-<p>In templates there is a number of files whose name ends in <tt class="docutils literal">.tmpl</tt>. Those are the
+</section>
+<section id="templates">
+<h2><a class="toc-backref" href="#toc-entry-3" role="doc-backlink">Templates</a></h2>
+<p>In templates there is a number of files whose name ends in <code class="docutils literal">.tmpl</code>. Those are the
 theme's page templates. They are done using the <a class="reference external" href="http://makotemplates.org">Mako</a>
 or <a class="reference external" href="http://jinja.pocoo.org">Jinja2</a> template languages. If you want to do a theme, you
-should learn one first. What engine is used by the theme is declared in the <tt class="docutils literal">engine</tt> file.</p>
+should learn one first. What engine is used by the theme is declared in the <code class="docutils literal">engine</code> file.</p>
 <p>The rest of this document explains Mako templates, but Jinja2 is fairly similar.</p>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">If you are using Mako templates, and want some extra speed when building the site
+<aside class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are using Mako templates, and want some extra speed when building the site
 you can install Beaker and <a class="reference external" href="http://docs.makotemplates.org/en/latest/caching.html">make templates be cached</a></p>
-</div>
+</aside>
 <p>Mako has a nifty concept of template inheritance. That means that, a
 template can inherit from another and only change small bits of the output. For example,
-<tt class="docutils literal">base.tmpl</tt> defines the whole layout for a page but has only a placeholder for content
-so <tt class="docutils literal">post.tmpl</tt> only define the content, and the layout is inherited from <tt class="docutils literal">base.tmpl</tt>.</p>
+<code class="docutils literal">base.tmpl</code> defines the whole layout for a page but has only a placeholder for content
+so <code class="docutils literal">post.tmpl</code> only define the content, and the layout is inherited from <code class="docutils literal">base.tmpl</code>.</p>
 <p>These are the templates that come with the included themes:</p>
-<dl class="docutils">
-<dt><tt class="docutils literal">base.tmpl</tt></dt>
-<dd><p class="first">This template defines the basic page layout for the site. It's mostly plain HTML
+<dl>
+<dt><code class="docutils literal">base.tmpl</code></dt>
+<dd><p>This template defines the basic page layout for the site. It's mostly plain HTML
 but defines a few blocks that can be re-defined by inheriting templates.</p>
-<p class="last">It has some separate pieces defined in <tt class="docutils literal">base_helper.tmpl</tt>,
-<tt class="docutils literal">base_header.tmpl</tt> and <tt class="docutils literal">base_footer.tmpl</tt> so they can be
+<p>It has some separate pieces defined in <code class="docutils literal">base_helper.tmpl</code>,
+<code class="docutils literal">base_header.tmpl</code> and <code class="docutils literal">base_footer.tmpl</code> so they can be
 easily overridden.</p>
 </dd>
-<dt><tt class="docutils literal">index.tmpl</tt></dt>
-<dd>Template used to render the multipost indexes. The posts are in a <tt class="docutils literal">posts</tt> variable.
-Some functionality is in the <tt class="docutils literal">index_helper.tmpl</tt> helper template.</dd>
-<dt><tt class="docutils literal">archiveindex.tmpl</tt></dt>
-<dd>Used to display archives, if <tt class="docutils literal">ARCHIVES_ARE_INDEXES</tt> is True.
-By default, it just inherits <tt class="docutils literal">index.tmpl</tt>.</dd>
-<dt><tt class="docutils literal">comments_helper.tmpl</tt></dt>
-<dd>This template handles comments. You should probably never touch it :-)
+<dt><code class="docutils literal">index.tmpl</code></dt>
+<dd><p>Template used to render the multipost indexes. The posts are in a <code class="docutils literal">posts</code> variable.
+Some functionality is in the <code class="docutils literal">index_helper.tmpl</code> helper template.</p>
+</dd>
+<dt><code class="docutils literal">archiveindex.tmpl</code></dt>
+<dd><p>Used to display archives, if <code class="docutils literal">ARCHIVES_ARE_INDEXES</code> is True.
+By default, it just inherits <code class="docutils literal">index.tmpl</code>.</p>
+</dd>
+<dt><code class="docutils literal">comments_helper.tmpl</code></dt>
+<dd><p>This template handles comments. You should probably never touch it :-)
 It uses a bunch of helper templates, one for each supported comment system
-(all of which start with <tt class="docutils literal">comments_helper</tt>)</dd>
-<dt><tt class="docutils literal">crumbs.tmpl</tt>, <tt class="docutils literal">slides.tmpl</tt></dt>
-<dd>These templates help render specific UI items, and can be tweaked as needed.</dd>
-<dt><tt class="docutils literal">gallery.tmpl</tt></dt>
-<dd><blockquote class="first">
+(all of which start with <code class="docutils literal">comments_helper</code>)</p>
+</dd>
+<dt><code class="docutils literal">crumbs.tmpl</code>, <code class="docutils literal">slides.tmpl</code></dt>
+<dd><p>These templates help render specific UI items, and can be tweaked as needed.</p>
+</dd>
+<dt><code class="docutils literal">gallery.tmpl</code></dt>
+<dd><blockquote>
 <p>Template used for image galleries. Interesting data includes:</p>
 <ul class="simple">
-<li><tt class="docutils literal">post</tt>: A post object, containing descriptive <tt class="docutils literal">post.text()</tt> for the gallery.</li>
-<li><tt class="docutils literal">crumbs</tt>: A list of <tt class="docutils literal">link, crumb</tt> to implement breadcrumbs.</li>
-<li><tt class="docutils literal">folders</tt>: A list of folders to implement hierarchical gallery navigation.</li>
-<li><tt class="docutils literal">enable_comments</tt>: To enable/disable comments in galleries.</li>
-<li><tt class="docutils literal">thumbnail_size</tt>: The <tt class="docutils literal">THUMBNAIL_SIZE</tt> option.</li>
-<li><tt class="docutils literal">photo_array</tt>: a list of dictionaries, each containing:<ul>
-<li><tt class="docutils literal">url</tt>: URL for the full-sized image.</li>
-<li><tt class="docutils literal">url_thumb</tt>: URL for the thumbnail.</li>
-<li><tt class="docutils literal">title</tt>: The title of the image.</li>
-<li><tt class="docutils literal">size</tt>: A dict containing <tt class="docutils literal">w</tt> and <tt class="docutils literal">h</tt>, the real size of the thumbnail.</li>
+<li><p><code class="docutils literal">post</code>: A post object, containing descriptive <code class="docutils literal">post.text()</code> for the gallery.</p></li>
+<li><p><code class="docutils literal">crumbs</code>: A list of <code class="docutils literal">link, crumb</code> to implement breadcrumbs.</p></li>
+<li><p><code class="docutils literal">folders</code>: A list of folders to implement hierarchical gallery navigation.</p></li>
+<li><p><code class="docutils literal">enable_comments</code>: To enable/disable comments in galleries.</p></li>
+<li><p><code class="docutils literal">thumbnail_size</code>: The <code class="docutils literal">THUMBNAIL_SIZE</code> option.</p></li>
+<li><p><code class="docutils literal">photo_array</code>: a list of dictionaries, each containing:</p>
+<ul>
+<li><p><code class="docutils literal">url</code>: URL for the full-sized image.</p></li>
+<li><p><code class="docutils literal">url_thumb</code>: URL for the thumbnail.</p></li>
+<li><p><code class="docutils literal">title</code>: The title of the image.</p></li>
+<li><p><code class="docutils literal">size</code>: A dict containing <code class="docutils literal">w</code> and <code class="docutils literal">h</code>, the real size of the thumbnail.</p></li>
 </ul>
 </li>
 </ul>
 </blockquote>
-<ul class="last simple">
-<li><tt class="docutils literal">photo_array_json</tt>: a JSON dump of photo_array, used in the bootstrap theme by flowr.js</li>
+<ul class="simple">
+<li><p><code class="docutils literal">photo_array_json</code>: a JSON dump of photo_array, used in the bootstrap theme by flowr.js</p></li>
 </ul>
 </dd>
-<dt><tt class="docutils literal">list.tmpl</tt></dt>
-<dd>Template used to display generic lists of links, which it gets in <tt class="docutils literal">items</tt>,
-a list of (text, link) elements.</dd>
-<dt><tt class="docutils literal">list_post.tmpl</tt></dt>
-<dd>Template used to display generic lists of posts, which it gets in <tt class="docutils literal">posts</tt>.</dd>
-<dt><tt class="docutils literal">listing.tmpl</tt></dt>
-<dd>Used to display code listings.</dd>
-<dt><tt class="docutils literal">post.tmpl</tt></dt>
-<dd>Template used by default for blog posts, gets the data in a <tt class="docutils literal">post</tt> object
+<dt><code class="docutils literal">list.tmpl</code></dt>
+<dd><p>Template used to display generic lists of links, which it gets in <code class="docutils literal">items</code>,
+a list of (text, link) elements.</p>
+</dd>
+<dt><code class="docutils literal">list_post.tmpl</code></dt>
+<dd><p>Template used to display generic lists of posts, which it gets in <code class="docutils literal">posts</code>.</p>
+</dd>
+<dt><code class="docutils literal">listing.tmpl</code></dt>
+<dd><p>Used to display code listings.</p>
+</dd>
+<dt><code class="docutils literal">post.tmpl</code></dt>
+<dd><p>Template used by default for blog posts, gets the data in a <code class="docutils literal">post</code> object
 which is an instance of the Post class. Some functionality is in the
-<tt class="docutils literal">post_helper.tmpl</tt> and <tt class="docutils literal">post_header.tmpl</tt> templates.</dd>
-<dt><tt class="docutils literal">post_list_directive.tmpl</tt></dt>
-<dd>Template used by the <tt class="docutils literal">post_list</tt> reStructuredText directive.</dd>
-<dt><tt class="docutils literal">story.tmpl</tt></dt>
-<dd>Used for pages that are not part of a blog, usually a cleaner, less
-intrusive layout than <tt class="docutils literal">post.tmpl</tt>, but same parameters.</dd>
-<dt><tt class="docutils literal">tag.tmpl</tt></dt>
-<dd>Used to show the contents of a single tag or category.</dd>
-<dt><tt class="docutils literal">tagindex.tmpl</tt></dt>
-<dd>Used to show the contents of a single tag or category, if <tt class="docutils literal">TAG_PAGES_ARE_INDEXES</tt> is True.
-By default, it just inherits <tt class="docutils literal">index.tmpl</tt>.</dd>
-<dt><tt class="docutils literal">tags.tmpl</tt></dt>
-<dd>Used to display the list of tags and categories.</dd>
+<code class="docutils literal">post_helper.tmpl</code> and <code class="docutils literal">post_header.tmpl</code> templates.</p>
+</dd>
+<dt><code class="docutils literal">post_list_directive.tmpl</code></dt>
+<dd><p>Template used by the <code class="docutils literal">post_list</code> reStructuredText directive.</p>
+</dd>
+<dt><code class="docutils literal">story.tmpl</code></dt>
+<dd><p>Used for pages that are not part of a blog, usually a cleaner, less
+intrusive layout than <code class="docutils literal">post.tmpl</code>, but same parameters.</p>
+</dd>
+<dt><code class="docutils literal">tag.tmpl</code></dt>
+<dd><p>Used to show the contents of a single tag or category.</p>
+</dd>
+<dt><code class="docutils literal">tagindex.tmpl</code></dt>
+<dd><p>Used to show the contents of a single tag or category, if <code class="docutils literal">TAG_PAGES_ARE_INDEXES</code> is True.
+By default, it just inherits <code class="docutils literal">index.tmpl</code>.</p>
+</dd>
+<dt><code class="docutils literal">tags.tmpl</code></dt>
+<dd><p>Used to display the list of tags and categories.</p>
+</dd>
 </dl>
-<p>You can add other templates for specific pages, which the user can then use in his <tt class="docutils literal">POSTS</tt>
-or <tt class="docutils literal">PAGES</tt> option in <tt class="docutils literal">conf.py</tt>. Also, keep in mind that your theme is yours,
+<p>You can add other templates for specific pages, which the user can then use in his <code class="docutils literal">POSTS</code>
+or <code class="docutils literal">PAGES</code> option in <code class="docutils literal">conf.py</code>. Also, keep in mind that your theme is yours,
 there is no reason why you would need to maintain the inheritance as it is, or not
 require whatever data you want.</p>
-<p>Also, you can specify a custom template to be used by a post or page via the <tt class="docutils literal">template</tt> metadata,
-and custom templates can be added in the <tt class="docutils literal">templates/</tt> folder of your site.</p>
-</div>
-<div class="section" id="customizing-themes-to-user-color-preference-and-section-colors">
-<h1><a class="toc-backref" href="#id3">Customizing themes to user color preference and section colors</a></h1>
+<p>Also, you can specify a custom template to be used by a post or page via the <code class="docutils literal">template</code> metadata,
+and custom templates can be added in the <code class="docutils literal">templates/</code> folder of your site.</p>
+</section>
+<section id="customizing-themes-to-user-color-preference-and-section-colors">
+<h2><a class="toc-backref" href="#toc-entry-4" role="doc-backlink">Customizing themes to user color preference and section colors</a></h2>
 <p>The user’s preference for theme color is exposed in templates as
-<tt class="docutils literal">theme_color</tt> set in the <tt class="docutils literal">THEME_COLOR</tt> option.</p>
+<code class="docutils literal">theme_color</code> set in the <code class="docutils literal">THEME_COLOR</code> option.</p>
 <p>Each section has an assigned color that is either set by the user or auto
-selected by adjusting the hue of the user’s <tt class="docutils literal">THEME_COLOR</tt>. The color is
-exposed in templates through <tt class="docutils literal">post.section_color(lang)</tt>. The function that
+selected by adjusting the hue of the user’s <code class="docutils literal">THEME_COLOR</code>. The color is
+exposed in templates through <code class="docutils literal">post.section_color(lang)</code>. The function that
 generates the colors from strings and any given color (by section name and
 theme color for sections) is exposed through the
-<tt class="docutils literal">colorize_str_from_base_color(string, hex_color)</tt> function</p>
+<code class="docutils literal">colorize_str_from_base_color(string, hex_color)</code> function</p>
 <p>Hex color values, like that returned by the theme or section color can be
 altered in the HSL colorspace through the function
-<tt class="docutils literal">color_hsl_adjust_hex(hex_string, adjust_h, adjust_s, adjust_l)</tt>.
+<code class="docutils literal">color_hsl_adjust_hex(hex_string, adjust_h, adjust_s, adjust_l)</code>.
 Adjustments are given in values between 1.0 and -1.0. For example, the theme
 color can be made lighter using:</p>
-<pre class="code html+mako"><a name="rest_code_fd9f93ca4d29476182bad3feb656f8de-1"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color:</span><span class="cp">${</span><span class="n">color_hsl_adjust_hex</span><span class="p">(</span><span class="n">theme_color</span><span class="p">,</span> <span class="n">adjust_l</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span><span class="cp">}</span><span class="s">&quot;</span><span class="p">&gt;</span>
+<div class="code"><pre class="code html+mako"><a id="rest_code_3b5e5683c8cd483ba78feadb0cca1032-1" name="rest_code_3b5e5683c8cd483ba78feadb0cca1032-1" href="#rest_code_3b5e5683c8cd483ba78feadb0cca1032-1"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color:</span><span class="cp">${</span><span class="n">color_hsl_adjust_hex</span><span class="p">(</span><span class="n">theme_color</span><span class="p">,</span> <span class="n">adjust_l</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span><span class="cp">}</span><span class="s">&quot;</span><span class="p">&gt;</span>
 </pre></div>
-<div class="section" id="identifying-and-customizing-different-kinds-of-pages-with-a-shared-template">
-<h1><a class="toc-backref" href="#id4">Identifying and customizing different kinds of pages with a shared template</a></h1>
+</section>
+<section id="identifying-and-customizing-different-kinds-of-pages-with-a-shared-template">
+<h2><a class="toc-backref" href="#toc-entry-5" role="doc-backlink">Identifying and customizing different kinds of pages with a shared template</a></h2>
 <p>Nikola provides a <cite>pagekind</cite> in each template contexts that can be used to
 modify shared templates based on the context it’s being used. For example,
-the <tt class="docutils literal">base_helper.tmpl</tt> is used in all pages, <tt class="docutils literal">indexes.tmpl</tt> is used in
+the <code class="docutils literal">base_helper.tmpl</code> is used in all pages, <code class="docutils literal">indexes.tmpl</code> is used in
 many contexts and you may want to add or remove something from only one of
 these contexts.</p>
 <p>Example of conditionally loading different resources on all index pages
 (archives, author pages, and tag pages), and others again o the front page
 and in every post pages:</p>
-<pre class="code html+mako"><a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-1"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-2"></a>    …
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-3"></a>    <span class="cp">%</span> <span class="k">if</span> <span class="s1">&#39;index&#39;</span> <span class="ow">in</span> <span class="n">pagekind</span><span class="p">:</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-4"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/assets/css/multicolumn.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-5"></a>    <span class="cp">%</span><span class="k"> endif</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-6"></a>    <span class="cp">%</span> <span class="k">if</span> <span class="s1">&#39;front_page&#39;</span> <span class="ow">in</span> <span class="n">pagekind</span><span class="p">:</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-7"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/assets/css/fancy_homepage.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-8"></a>        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/assets/js/post_carousel.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-9"></a>    <span class="cp">%</span><span class="k"> endif</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-10"></a>    <span class="cp">%</span> <span class="k">if</span> <span class="s1">&#39;post_page&#39;</span> <span class="ow">in</span> <span class="n">pagekind</span><span class="p">:</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-11"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/assets/css/article.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-12"></a>        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/assets/js/comment_system.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-13"></a>    <span class="cp">%</span><span class="k"> endif</span>
-<a name="rest_code_7d733a6529a640d4ba5f3f3b5cef437e-14"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</pre><p>Promoting visits to the front page when visiting other filtered
-<tt class="docutils literal">index.tmpl</tt> page variants such as author pages and tag pages. This
-could have been included in <tt class="docutils literal">index.tmpl</tt> or maybe in <tt class="docutils literal">base.tmpl</tt>
+<div class="code"><pre class="code html+mako"><a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-1" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-1" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-1"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-2" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-2" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-2"></a>    …
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-3" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-3" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-3"></a><span class="w">    </span><span class="cp">%</span> <span class="k">if</span> <span class="s1">&#39;index&#39;</span> <span class="ow">in</span> <span class="n">pagekind</span><span class="p">:</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-4" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-4" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-4"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/assets/css/multicolumn.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-5" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-5" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-5"></a><span class="w">    </span><span class="cp">%</span><span class="k"> endif</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-6" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-6" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-6"></a><span class="w">    </span><span class="cp">%</span> <span class="k">if</span> <span class="s1">&#39;front_page&#39;</span> <span class="ow">in</span> <span class="n">pagekind</span><span class="p">:</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-7" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-7" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-7"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/assets/css/fancy_homepage.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-8" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-8" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-8"></a>        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/assets/js/post_carousel.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-9" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-9" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-9"></a><span class="w">    </span><span class="cp">%</span><span class="k"> endif</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-10" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-10" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-10"></a><span class="w">    </span><span class="cp">%</span> <span class="k">if</span> <span class="s1">&#39;post_page&#39;</span> <span class="ow">in</span> <span class="n">pagekind</span><span class="p">:</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-11" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-11" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-11"></a>        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/assets/css/article.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-12" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-12" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-12"></a>        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/assets/js/comment_system.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-13" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-13" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-13"></a><span class="w">    </span><span class="cp">%</span><span class="k"> endif</span>
+<a id="rest_code_700ee8f883b84ec68cdc815ce16b84ed-14" name="rest_code_700ee8f883b84ec68cdc815ce16b84ed-14" href="#rest_code_700ee8f883b84ec68cdc815ce16b84ed-14"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</pre></div>
+<p>Promoting visits to the front page when visiting other filtered
+<code class="docutils literal">index.tmpl</code> page variants such as author pages and tag pages. This
+could have been included in <code class="docutils literal">index.tmpl</code> or maybe in <code class="docutils literal">base.tmpl</code>
 depending on what you want to achieve.</p>
-<pre class="code html+mako"><a name="rest_code_0cc2bb3d778448faa5050ac7f656d4ff-1"></a><span class="cp">%</span> <span class="k">if</span> <span class="s1">&#39;index&#39;</span> <span class="ow">in</span> <span class="n">pagekind</span><span class="p">:</span>
-<a name="rest_code_0cc2bb3d778448faa5050ac7f656d4ff-2"></a>    <span class="cp">%</span> <span class="k">if</span> <span class="s1">&#39;author_page&#39;</span> <span class="ow">in</span> <span class="n">postkind</span><span class="p">:</span>
-<a name="rest_code_0cc2bb3d778448faa5050ac7f656d4ff-3"></a>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>These posts were written by <span class="cp">${</span><span class="n">author</span><span class="cp">}</span>. See posts by all
-<a name="rest_code_0cc2bb3d778448faa5050ac7f656d4ff-4"></a>           authors on the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/&quot;</span><span class="p">&gt;</span>front page<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<a name="rest_code_0cc2bb3d778448faa5050ac7f656d4ff-5"></a>    <span class="cp">%</span> <span class="k">elif</span> <span class="s1">&#39;tag_page&#39;</span> <span class="ow">in</span> <span class="n">postkind</span><span class="p">:</span>
-<a name="rest_code_0cc2bb3d778448faa5050ac7f656d4ff-6"></a>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is a filtered selection of posts tagged “<span class="cp">${</span><span class="n">tag</span><span class="cp">}</span>”, visit
-<a name="rest_code_0cc2bb3d778448faa5050ac7f656d4ff-7"></a>           the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/&quot;</span><span class="p">&gt;</span>front page<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> to see all posts.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<a name="rest_code_0cc2bb3d778448faa5050ac7f656d4ff-8"></a>    <span class="cp">%</span><span class="k"> endif</span>
-<a name="rest_code_0cc2bb3d778448faa5050ac7f656d4ff-9"></a><span class="cp">%</span><span class="k"> endif</span>
-</pre><p>List of page kinds provided by default plugins:</p>
+<div class="code"><pre class="code html+mako"><a id="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-1" name="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-1" href="#rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-1"></a><span class="cp">%</span> <span class="k">if</span> <span class="s1">&#39;index&#39;</span> <span class="ow">in</span> <span class="n">pagekind</span><span class="p">:</span>
+<a id="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-2" name="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-2" href="#rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-2"></a><span class="w">    </span><span class="cp">%</span> <span class="k">if</span> <span class="s1">&#39;author_page&#39;</span> <span class="ow">in</span> <span class="n">postkind</span><span class="p">:</span>
+<a id="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-3" name="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-3" href="#rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-3"></a>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>These posts were written by <span class="cp">${</span><span class="n">author</span><span class="cp">}</span>. See posts by all
+<a id="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-4" name="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-4" href="#rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-4"></a>           authors on the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/&quot;</span><span class="p">&gt;</span>front page<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-5" name="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-5" href="#rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-5"></a><span class="w">    </span><span class="cp">%</span> <span class="k">elif</span> <span class="s1">&#39;tag_page&#39;</span> <span class="ow">in</span> <span class="n">postkind</span><span class="p">:</span>
+<a id="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-6" name="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-6" href="#rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-6"></a>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is a filtered selection of posts tagged “<span class="cp">${</span><span class="n">tag</span><span class="cp">}</span>”, visit
+<a id="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-7" name="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-7" href="#rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-7"></a>           the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/&quot;</span><span class="p">&gt;</span>front page<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> to see all posts.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-8" name="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-8" href="#rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-8"></a><span class="w">    </span><span class="cp">%</span><span class="k"> endif</span>
+<a id="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-9" name="rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-9" href="#rest_code_a3ecba85a4bc47f6b3c0f7481f96b875-9"></a><span class="cp">%</span><span class="k"> endif</span>
+</pre></div>
+<p>List of page kinds provided by default plugins:</p>
 <ul class="simple">
-<li>front_page</li>
-<li>index</li>
-<li>index, archive_page</li>
-<li>index, author_page</li>
-<li>index, main_index</li>
-<li>index, section_page</li>
-<li>index, tag_page</li>
-<li>list</li>
-<li>list, archive_page</li>
-<li>list, author_page</li>
-<li>list, section_page</li>
-<li>list, tag_page</li>
-<li>list, tags_page</li>
-<li>post_page</li>
-<li>page_page</li>
-<li>story_page</li>
-<li>listing</li>
-<li>generic_page</li>
-<li>gallery_front</li>
-<li>gallery_page</li>
+<li><p>front_page</p></li>
+<li><p>index</p></li>
+<li><p>index, archive_page</p></li>
+<li><p>index, author_page</p></li>
+<li><p>index, main_index</p></li>
+<li><p>index, section_page</p></li>
+<li><p>index, tag_page</p></li>
+<li><p>list</p></li>
+<li><p>list, archive_page</p></li>
+<li><p>list, author_page</p></li>
+<li><p>list, section_page</p></li>
+<li><p>list, tag_page</p></li>
+<li><p>list, tags_page</p></li>
+<li><p>post_page</p></li>
+<li><p>page_page</p></li>
+<li><p>story_page</p></li>
+<li><p>listing</p></li>
+<li><p>generic_page</p></li>
+<li><p>gallery_front</p></li>
+<li><p>gallery_page</p></li>
 </ul>
-</div>
-<div class="section" id="messages-and-translations">
-<h1><a class="toc-backref" href="#id5">Messages and Translations</a></h1>
+</section>
+<section id="messages-and-translations">
+<h2><a class="toc-backref" href="#toc-entry-6" role="doc-backlink">Messages and Translations</a></h2>
 <p>The included themes are translated into a variety of languages. You can add your own translation
 at <a class="reference external" href="https://www.transifex.com/projects/p/nikola/">https://www.transifex.com/projects/p/nikola/</a></p>
 <p>If you want to create a theme that has new strings, and you want those strings to be translatable,
-then your theme will need a custom <tt class="docutils literal">messages</tt> folder.</p>
-</div>
-<div class="section" id="less-and-sass">
-<h1><a class="reference external" href="http://lesscss.org/">LESS</a> and <a class="reference external" href="http://sass-lang.com/">Sass</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The LESS and Sass compilers were moved to the Plugins Index in
+then your theme will need a custom <code class="docutils literal">messages</code> folder.</p>
+</section>
+<section id="less-and-sass">
+<h2><a class="reference external" href="http://lesscss.org/">LESS</a> and <a class="reference external" href="http://sass-lang.com/">Sass</a></h2>
+<aside class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The LESS and Sass compilers were moved to the Plugins Index in
 Nikola v7.0.0.</p>
-</div>
+</aside>
 <p>If you want to use those CSS extensions, you can — just store your files
-in the <tt class="docutils literal">less</tt> or <tt class="docutils literal">sass</tt> directory of your theme.</p>
-<p>In order to have them work, you need to create a list of <tt class="docutils literal">.less</tt> or
-<tt class="docutils literal"><span class="pre">.scss/.sass</span></tt> files to compile — the list should be in a file named
-<tt class="docutils literal">targets</tt> in the respective directory (<tt class="docutils literal">less</tt>/<tt class="docutils literal">sass</tt>).</p>
-<p>The files listed in the <tt class="docutils literal">targets</tt> file will be passed to the respective
-compiler, which you have to install manually (<tt class="docutils literal">lessc</tt> which comes from
-the Node.js package named <tt class="docutils literal">less</tt> or <tt class="docutils literal">sass</tt> from a Ruby package aptly
-named <tt class="docutils literal">sass</tt>).  Whatever the compiler outputs will be saved as a CSS
-file in your rendered site, with the <tt class="docutils literal">.css</tt> extension.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Conflicts may occur if you have two files with the same base name
+in the <code class="docutils literal">less</code> or <code class="docutils literal">sass</code> directory of your theme.</p>
+<p>In order to have them work, you need to create a list of <code class="docutils literal">.less</code> or
+<code class="docutils literal"><span class="pre">.scss/.sass</span></code> files to compile — the list should be in a file named
+<code class="docutils literal">targets</code> in the respective directory (<code class="docutils literal">less</code>/<code class="docutils literal">sass</code>).</p>
+<p>The files listed in the <code class="docutils literal">targets</code> file will be passed to the respective
+compiler, which you have to install manually (<code class="docutils literal">lessc</code> which comes from
+the Node.js package named <code class="docutils literal">less</code> or <code class="docutils literal">sass</code> from a Ruby package aptly
+named <code class="docutils literal">sass</code>).  Whatever the compiler outputs will be saved as a CSS
+file in your rendered site, with the <code class="docutils literal">.css</code> extension.</p>
+<aside class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Conflicts may occur if you have two files with the same base name
 but a different extension.  Pay attention to how you name your files
 or your site won’t build!  (Nikola will tell you what’s wrong when
 this happens)</p>
-</div>
-</div>
+</aside>
+</section>
+</section>

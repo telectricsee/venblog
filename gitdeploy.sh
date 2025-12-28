@@ -15,9 +15,9 @@ git add .
 git commit -m "nikola has rebuilt 2025 revival"
 git push origin src
 
-cd $LIVDIR
+cd $DST
 git add .
 git commit -am "publish update 2025 revival"
 git push srv master
 
-cd $VENDIR
+cd $DIR

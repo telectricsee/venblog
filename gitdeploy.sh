@@ -1,23 +1,43 @@
 #!/bin/bash
-# push source to github
+# sync live and push source to github
 set -euo pipefail
+WD="$HOME/Public/git/venblog/"
+SRC="$HOME/Public/git/venblog/output/"
+DST="$HOME/Public/git/site-live/"
 
-DIR=/home/rskz/Public/git/venblog/
-SRC=/home/rskz/Public/git/venblog/output/
-DST=/home/rskz/Public/git/site-live/
+echo "Running rsync for Nikola site output to live-site local repo"
+rsync -av --delete \
+  --exclude='.git/' \
+  --exclude='.github/' \
+  --exclude='.gitignore' \
+  --exclude='.gitmodules' \
+  "$SRC" "$DST"
 
-rsync -av --delete --exclude='.*' --exclude='.*/*' "$SRC" "$DST"
 
-cd $DIR
-chmod 666 ./posts/*
+echo "Running git push for venblog local repo."
+cd $WD
+# chmod 666 ./posts/*
 
-git add .
-git commit -m "nikola has rebuilt 2025 revival"
-git push origin src
+git status
+git add -A
+if  git diff --cached --quiet; then
+  echo "No changes to commit in venblog."
+  exit 0
+fi
 
+git commit -m "Publish: $(date -Iseconds) nikola rebuild 2025 revival"
+git push
+
+
+echo "Running git push for site-live local repo."
 cd $DST
-git add .
-git commit -am "publish update 2025 revival"
-git push srv master
 
-cd $DIR
+git status
+git add -A
+if git diff --cached --quiet; then
+  echo "No changes to commit in site-live."
+  exit 0
+fi
+
+git commit -m "Publish: $(date -Iseconds) venblog 2025 revival"
+git push

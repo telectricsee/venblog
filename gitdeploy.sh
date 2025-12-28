@@ -5,7 +5,7 @@ VENDIR=/home/rskz/Public/git/venblog/
 PUBDIR=/home/rskz/Public/git/venblog/output/
 LIVDIR=/home/rskz/Public/git/site-live/
 
-rsync -av --delete $PUBDIR $LIVDIR
+rsync -av --delete --exclude='.*' $PUBDIR $LIVDIR
 
 cd $VENDIR
 chmod 666 ./posts/*

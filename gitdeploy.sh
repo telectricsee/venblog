@@ -1,13 +1,14 @@
 #!/bin/bash
 # push source to github
+set -euo pipefail
 
-VENDIR=/home/rskz/Public/git/venblog/
-PUBDIR=/home/rskz/Public/git/venblog/output/
-LIVDIR=/home/rskz/Public/git/site-live/
+DIR=/home/rskz/Public/git/venblog/
+SRC=/home/rskz/Public/git/venblog/output/
+DST=/home/rskz/Public/git/site-live/
 
-rsync -av --delete --exclude='.*' $PUBDIR $LIVDIR
+rsync -av --delete --exclude='.*' --exclude='.*/*' "$SRC" "$DST"
 
-cd $VENDIR
+cd $DIR
 chmod 666 ./posts/*
 
 git add .

@@ -1,9 +1,10 @@
 #!/bin/bash
 # push source to github
 
-VENDIR=~/Public/git/venblog/
-PUBDIR=~/Public/git/venblog/output/
-LIVDIR=~/Public/git/site-live/
+VENDIR=/home/rskz/Public/git/venblog/
+PUBDIR=/home/rskz/Public/git/venblog/output/
+LIVDIR=/home/rskz/Public/git/site-live/
+
 rsync -av --delete $PUBDIR $LIVDIR
 
 cd $VENDIR

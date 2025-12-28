@@ -22,12 +22,10 @@ git status
 git add -A
 if  git diff --cached --quiet; then
   echo "No changes to commit in venblog."
-  exit 0
+else
+  git commit -m "Publish: $(date) nikola rebuild 2025 revival"
+  git push
 fi
-
-git commit -m "Publish: $(date) nikola rebuild 2025 revival"
-git push
-
 
 echo "Running git push for site-live local repo."
 cd $DST
